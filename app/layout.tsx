@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://landing-visas-elite.netlify.app"),
+  metadataBase: new URL("https://visaelite.netlify.app"),
   title: "Visas Elite | Trae a tus padres a EE.UU. con acompañamiento premium",
   description:
     "+1.000 visas aprobadas. Catalina Cardozo brinda asistencia y acompañamiento premium para que los padres de colombianos en EE.UU. obtengan su visa americana.",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "+1.000 casos exitosos. Garantía de 8 semanas. Asistencia presencial en cada etapa del proceso.",
     type: "website",
-    url: "https://catalinavisaselite.com",
+    url: "https://visaelite.netlify.app",
   },
   twitter: { card: "summary_large_image" },
 };
