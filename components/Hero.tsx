@@ -47,9 +47,14 @@ export default function Hero() {
         <motion.div variants={stagger} initial="hidden" animate="show">
 
           {/* Badge */}
-          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 border border-gold/40 text-gold rounded-full px-4 py-1.5 text-sm font-medium mb-8">
-            <span className="w-2 h-2 rounded-full bg-gold pulse-dot" />
-            Solo para hijos colombianos en Estados Unidos
+          <motion.div variants={fadeUp} className="flex justify-center mb-8">
+            <div className="gradient-border-badge">
+              <div className="inner">
+                <span className="marquee-text">
+                  Solo para hijos colombianos en Estados Unidos &nbsp;&nbsp;·&nbsp;&nbsp; Solo para hijos colombianos en Estados Unidos
+                </span>
+              </div>
+            </div>
           </motion.div>
 
           {/* Headline */}
@@ -80,6 +85,7 @@ export default function Hero() {
           <motion.p variants={fadeUp} className="text-sm text-slate-400">
             Sin costo · Sin tarjeta · Respuesta en menos de 24 h
           </motion.p>
+
 
           {/* Stats */}
           <motion.div
