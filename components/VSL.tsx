@@ -47,7 +47,7 @@ export default function VSL() {
                 <div className="absolute inset-0 rounded-full border border-gold/30 scale-125 animate-ping opacity-40" />
               </button>
 
-              <p className="mt-6 text-slate-400 text-sm">Video próximamente</p>
+              <p className="mt-6 text-slate-400 text-sm"></p>
             </div>
           )}
         </motion.div>

@@ -5,52 +5,53 @@ import { useState } from "react";
 
 const TESTIMONIOS = [
   {
-    id: "dQw4w9WgXcQ",
-    nombre: "María Fernanda R.",
-    ciudad: "Chicago, IL",
+    id: "1204031822",
+    nombre: "Jessica Muriel",
+    ciudad: "",
     resultado: "Visa aprobada en primera cita",
-    descripcion: "Mamá de 68 años, sin inglés. En 6 semanas lista para la entrevista.",
+    descripcion: "En 20 días lista para la entrevista.",
   },
   {
-    id: "dQw4w9WgXcQ",
-    nombre: "Carlos A.",
-    ciudad: "Miami, FL",
-    resultado: "Padres llegaron en 90 días",
-    descripcion: "Papás rechazados antes por cuenta propia. Con Catalina, aprobados.",
+    id: "1204031811",
+    nombre: "Margarita Orozco",
+    ciudad: "",
+    resultado: "45 días de proceso",
+    descripcion: "Después de dos negaciones. Con Catalina, aprobados.",
   },
   {
-    id: "dQw4w9WgXcQ",
-    nombre: "Juliana P.",
-    ciudad: "New York, NY",
-    resultado: "Visa 10 años para ambos padres",
+    id: "1204031791",
+    nombre: "Alejandra Arboleada.",
+    ciudad: "",
+    resultado: "45 días de proceso",
     descripcion: "Primera vez que aplicaban. Proceso impecable desde el día 1.",
   },
   {
-    id: "dQw4w9WgXcQ",
-    nombre: "Andrés M.",
-    ciudad: "Houston, TX",
+    id: "1204031794",
+    nombre: "Steven Restrepo",
+    ciudad: "",
     resultado: "Aprobados en 45 días",
     descripcion: "Vivía con el miedo de que los rechazaran. Catalina nos dio seguridad.",
   },
   {
-    id: "dQw4w9WgXcQ",
-    nombre: "Valentina C.",
-    ciudad: "Los Angeles, CA",
-    resultado: "Mamá vino al nacimiento de mi hijo",
-    descripcion: "Logré lo que más quería: que mi mamá conociera a mi bebé.",
+    id: "1204031793",
+    nombre: "Ana Narvaez",
+    ciudad: "",
+    resultado: "30 días de proceso",
+    descripcion: "Logré lo que más quería",
   },
   {
-    id: "dQw4w9WgXcQ",
-    nombre: "Diego H.",
-    ciudad: "Atlanta, GA",
+    id: "1204031792",
+    nombre: "Angela Angola",
+    ciudad: "",
     resultado: "Proceso sin estrés ni sorpresas",
     descripcion: "Todo documentado, todo claro. Exactamente lo que necesitaba.",
   },
 ];
 
-function VideoCard({ t }: { t: typeof TESTIMONIOS[0] }) {
+type Testimonio = typeof TESTIMONIOS[0];
+
+function VideoCard({ t }: { t: Testimonio }) {
   const [playing, setPlaying] = useState(false);
-  const thumb = `https://img.youtube.com/vi/${t.id}/hqdefault.jpg`;
 
   return (
     <motion.div
@@ -59,26 +60,29 @@ function VideoCard({ t }: { t: typeof TESTIMONIOS[0] }) {
       viewport={{ once: true, amount: 0.2 }}
       className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden group"
     >
-      {/* Video area */}
-      <div className="relative aspect-video bg-navy-900 cursor-pointer" onClick={() => setPlaying(true)}>
+      <div className="relative overflow-hidden" style={{ aspectRatio: "9/16" }}>
         {playing ? (
           <iframe
             className="w-full h-full"
-            src={`https://www.youtube.com/embed/${t.id}?autoplay=1&controls=1&rel=0`}
-            allow="autoplay; encrypted-media"
+            src={`https://player.vimeo.com/video/${t.id}?autoplay=1&title=0&byline=0&portrait=0&controls=1`}
+            allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
           />
         ) : (
-          <>
-            <img src={thumb} alt={t.nombre} className="w-full h-full object-cover opacity-70" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-16 h-16 rounded-full bg-gold/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <svg className="w-6 h-6 text-navy ml-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer bg-navy-gradient"
+            onClick={() => setPlaying(true)}
+          >
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-gold/10 blur-3xl" />
             </div>
-          </>
+            <div className="w-16 h-16 rounded-full bg-gold/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 z-10">
+              <svg className="w-6 h-6 text-navy ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+            <p className="mt-4 text-slate-400 text-xs z-10">Ver testimonio</p>
+          </div>
         )}
       </div>
 
