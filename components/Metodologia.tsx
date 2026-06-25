@@ -5,25 +5,25 @@ import { motion } from "framer-motion";
 const PASOS = [
   {
     num: 1,
-    pct: 20,
+    pct: 100,
     titulo: "Diagnóstico gratuito",
     desc: "Analizamos el perfil migratorio de tus padres, identificamos riesgos y definimos si el caso es viable. Sin costo, sin compromiso.",
   },
   {
     num: 2,
-    pct: 40,
+    pct: 100,
     titulo: "Preparación documental",
     desc: "Armamos el expediente completo: carta de invitación, solvencia económica, vínculos familiares y todo lo que la Embajada necesita ver.",
   },
   {
     num: 3,
-    pct: 60,
+    pct: 100,
     titulo: "Simulacro de entrevista",
     desc: "Preparamos a tus padres para el día D. Practicamos las preguntas más frecuentes del cónsul en su idioma, sin estrés.",
   },
   {
     num: 4,
-    pct: 80,
+    pct: 100,
     titulo: "Acompañamiento el día de la cita",
     desc: "Estamos disponibles antes, durante y después de la entrevista para resolver cualquier imprevisto en tiempo real.",
   },
