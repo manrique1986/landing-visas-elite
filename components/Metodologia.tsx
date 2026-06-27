@@ -108,7 +108,7 @@ export default function Metodologia() {
           className="text-center mt-16"
         >
           <a href="#agendar" className="cta-btn px-10 py-4 rounded-xl text-base">
-            Quiero empezar el proceso
+            QUIERO AGENDAR UNA LLAMADA
           </a>
         </motion.div>
       </div>

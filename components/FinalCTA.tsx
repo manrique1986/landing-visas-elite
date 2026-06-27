@@ -53,7 +53,7 @@ export default function FinalCTA() {
             rel="noopener noreferrer"
             className="cta-btn glow-ring inline-block px-12 py-5 rounded-xl text-lg mb-4"
           >
-            Agendar mi diagnóstico gratuito
+            QUIERO AGENDAR UNA LLAMADA
           </a>
         </motion.div>
 

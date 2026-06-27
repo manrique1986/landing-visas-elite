@@ -4,6 +4,7 @@ import VSL from "@/components/VSL";
 import Pain from "@/components/Pain";
 import Calificacion from "@/components/Calificacion";
 import VideoTestimonios from "@/components/VideoTestimonios";
+import Pruebas from "@/components/Pruebas";
 import WhyCatalina from "@/components/WhyCatalina";
 import Metodologia from "@/components/Metodologia";
 import Testimonials from "@/components/Testimonials";
@@ -21,6 +22,7 @@ export default function Page() {
         <Pain />
         <Calificacion />
         <VideoTestimonios />
+        <Pruebas />
         <WhyCatalina />
         <Metodologia />
         <Testimonials />
