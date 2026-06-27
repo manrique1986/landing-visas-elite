@@ -1,6 +1,7 @@
 "use client";
 
-// Agregá tus screenshots en public/screenshots/ con estos nombres
+import { useRef } from "react";
+
 const SCREENSHOTS = [
   "/screenshots/ws1.png",
   "/screenshots/ws2.png",
@@ -8,10 +9,17 @@ const SCREENSHOTS = [
   "/screenshots/ws4.png",
 ];
 
-// Duplicamos para el loop infinito
 const ITEMS = [...SCREENSHOTS, ...SCREENSHOTS];
 
 export default function Pruebas() {
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: "left" | "right") => {
+    if (!trackRef.current) return;
+    const amount = 440;
+    trackRef.current.scrollBy({ left: dir === "right" ? amount : -amount, behavior: "smooth" });
+  };
+
   return (
     <section className="py-24 bg-navy overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 mb-14 text-center">
@@ -19,20 +27,42 @@ export default function Pruebas() {
           Lo que dicen nuestras familias
         </h2>
         <p className="text-slate-400 mt-4 max-w-xl mx-auto">
-          Mensajes reales de clientes reales
+          Mensajes reales de clientes reales.
         </p>
       </div>
 
-      {/* Carrusel auto-scroll */}
       <div className="relative">
         {/* Fade izquierda */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+        <div className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
           style={{ background: "linear-gradient(to right, #0d1b4b, transparent)" }} />
         {/* Fade derecha */}
-        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+        <div className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
           style={{ background: "linear-gradient(to left, #0d1b4b, transparent)" }} />
 
-        <div className="flex gap-6 carousel-track">
+        {/* Botón anterior */}
+        <button
+          onClick={() => scroll("left")}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full flex items-center justify-center border border-gold/50 bg-navy/80 text-gold hover:bg-gold hover:text-navy transition-all shadow-lg"
+          aria-label="Anterior"
+        >
+          ‹
+        </button>
+
+        {/* Botón siguiente */}
+        <button
+          onClick={() => scroll("right")}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full flex items-center justify-center border border-gold/50 bg-navy/80 text-gold hover:bg-gold hover:text-navy transition-all shadow-lg"
+          aria-label="Siguiente"
+        >
+          ›
+        </button>
+
+        {/* Track con scroll nativo */}
+        <div
+          ref={trackRef}
+          className="flex gap-6 overflow-x-auto scroll-smooth pb-4 px-16"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           {ITEMS.map((src, i) => (
             <div
               key={i}
@@ -43,7 +73,6 @@ export default function Pruebas() {
                 alt={`Testimonio ${i + 1}`}
                 className="w-full h-auto object-cover"
                 onError={(e) => {
-                  // Placeholder si no existe la imagen aún
                   (e.target as HTMLImageElement).style.display = "none";
                   (e.target as HTMLImageElement).parentElement!.style.background = "rgba(255,255,255,0.05)";
                   (e.target as HTMLImageElement).parentElement!.style.height = "400px";
