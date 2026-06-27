@@ -123,7 +123,7 @@ export default function VideoTestimonios() {
 
         <div className="text-center mt-12">
           <a href="#agendar" className="cta-btn px-10 py-4 rounded-xl text-base">
-            Quiero el diagnóstico gratuito
+            QUIERO AGENDAR UNA LLAMADA
           </a>
         </div>
       </div>

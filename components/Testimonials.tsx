@@ -100,7 +100,7 @@ export default function Testimonials() {
           className="text-center"
         >
           <a href="#agendar" className="cta-btn inline-block px-10 py-4 rounded-xl text-base">
-            Quiero este acompañamiento para mis padres
+            QUIERO AGENDAR UNA LLAMADA
           </a>
           <p className="text-slate-400 text-sm mt-3">Diagnóstico gratuito · Sin compromiso</p>
         </motion.div>

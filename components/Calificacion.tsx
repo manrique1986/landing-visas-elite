@@ -14,10 +14,10 @@ const SI = [
 
 const NO = [
   "A tus padres los han deportado de EE.UU.",
-  "Han intentado la visa más de 3 veces y se la han negado",
-  "Tienen antecedentes penales en Colombia o en EE.UU.",
+  "Han intentado la visa más de 4 veces y se la han negado",
   "Buscan solo el papeleo sin preparación ni orientación",
   "No están dispuestos a dedicar tiempo a preparar la entrevista",
+  "Estás buscando visa para un menor de edad sin compañía de un familiar",
 ];
 
 const fade = {
@@ -106,7 +106,7 @@ export default function Calificacion() {
           className="text-center mt-12"
         >
           <a href="#agendar" className="cta-btn px-10 py-4 rounded-xl text-base">
-            Quiero el diagnóstico gratuito
+            QUIERO AGENDAR UNA LLAMADA
           </a>
         </motion.div>
       </div>

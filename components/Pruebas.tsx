@@ -19,7 +19,7 @@ export default function Pruebas() {
           Lo que dicen nuestras familias
         </h2>
         <p className="text-slate-400 mt-4 max-w-xl mx-auto">
-          Mensajes reales de clientes reales. Sin filtros.
+          Mensajes reales de clientes reales
         </p>
       </div>
 
@@ -32,11 +32,11 @@ export default function Pruebas() {
         <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
           style={{ background: "linear-gradient(to left, #0d1b4b, transparent)" }} />
 
-        <div className="flex gap-4 carousel-track">
+        <div className="flex gap-6 carousel-track">
           {ITEMS.map((src, i) => (
             <div
               key={i}
-              className="shrink-0 w-72 rounded-2xl overflow-hidden border border-white/10 shadow-xl"
+              className="shrink-0 w-105 rounded-2xl overflow-hidden border border-white/10 shadow-xl"
             >
               <img
                 src={src}
