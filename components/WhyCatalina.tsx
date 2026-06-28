@@ -81,6 +81,12 @@ export default function WhyCatalina() {
             </motion.div>
           ))}
         </motion.div>
+
+        <div className="text-center mt-12">
+          <a href="https://catalinavisaselite.com/formulario-de-aplicacion" className="cta-btn glow-ring inline-block px-10 py-4 rounded-xl text-base">
+            QUIERO AGENDAR UNA LLAMADA
+          </a>
+        </div>
       </div>
     </section>
   );

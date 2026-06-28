@@ -107,8 +107,8 @@ export default function Metodologia() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <a href="#agendar" className="cta-btn px-10 py-4 rounded-xl text-base">
-            Quiero empezar el proceso
+          <a href="https://catalinavisaselite.com/formulario-de-aplicacion" className="cta-btn px-10 py-4 rounded-xl text-base">
+            QUIERO AGENDAR UNA LLAMADA
           </a>
         </motion.div>
       </div>

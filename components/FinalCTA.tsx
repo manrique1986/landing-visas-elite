@@ -48,12 +48,12 @@ export default function FinalCTA() {
           transition={{ duration: 0.4, delay: 0.3 }}
         >
           <a
-            href="https://wa.me/573000000000?text=Hola%20Catalina%2C%20quiero%20agendar%20mi%20diagnóstico%20gratuito"
+            href="https://catalinavisaselite.com/formulario-de-aplicacion"
             target="_blank"
             rel="noopener noreferrer"
             className="cta-btn glow-ring inline-block px-12 py-5 rounded-xl text-lg mb-4"
           >
-            Agendar mi diagnóstico gratuito
+            QUIERO AGENDAR UNA LLAMADA
           </a>
         </motion.div>
 
