@@ -71,7 +71,7 @@ export default function Hero() {
 
           {/* CTA */}
           <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
-            <a href="#agendar" className="cta-btn glow-ring px-10 py-4 rounded-xl text-base">
+            <a href="https://catalinavisaselite.com/formulario-de-aplicacion" className="cta-btn glow-ring px-10 py-4 rounded-xl text-base">
               QUIERO AGENDAR UNA LLAMADA
             </a>
             <a

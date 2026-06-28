@@ -33,7 +33,7 @@ export default function Nav() {
           priority
         />
         <a
-          href="#agendar"
+          href="https://catalinavisaselite.com/formulario-de-aplicacion"
           className="cta-btn px-5 py-2.5 rounded-lg text-sm hidden sm:block"
         >
           Diagnóstico gratuito

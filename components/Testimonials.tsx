@@ -99,7 +99,7 @@ export default function Testimonials() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <a href="#agendar" className="cta-btn inline-block px-10 py-4 rounded-xl text-base">
+          <a href="https://catalinavisaselite.com/formulario-de-aplicacion" className="cta-btn inline-block px-10 py-4 rounded-xl text-base">
             QUIERO AGENDAR UNA LLAMADA
           </a>
           <p className="text-slate-400 text-sm mt-3">Diagnóstico gratuito · Sin compromiso</p>
