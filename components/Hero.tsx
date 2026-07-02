@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -34,14 +35,20 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="bg-navy-gradient relative min-h-[95vh] flex items-center pt-16 overflow-hidden">
+    <section className="relative min-h-[95vh] flex items-center pt-16 overflow-hidden">
 
-      {/* Animated blobs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="animate-blob absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-navy-700/40 blur-3xl" />
-        <div className="animate-blob delay-2 absolute top-1/2 -right-48 w-[600px] h-[600px] rounded-full bg-[#1a2a7a]/50 blur-3xl" />
-        <div className="animate-blob delay-4 absolute -bottom-32 left-1/3 w-[400px] h-[400px] rounded-full bg-gold/5 blur-3xl" />
-      </div>
+      {/* Foto de fondo */}
+      <Image
+        src="/emocional.png"
+        alt="Familia reunida"
+        fill
+        className="object-cover object-center"
+        priority
+        sizes="100vw"
+      />
+
+      {/* Overlay navy para legibilidad del texto */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a1535]/80 via-[#0a1535]/70 to-[#0a1535]/90" />
 
       <div className="relative max-w-3xl mx-auto px-6 py-24 text-center">
         <motion.div variants={stagger} initial="hidden" animate="show">
@@ -71,7 +78,7 @@ export default function Hero() {
 
           {/* CTA */}
           <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
-            <a href="https://catalinavisaselite.com/formulario-de-aplicacion" className="cta-btn glow-ring px-10 py-4 rounded-xl text-base">
+            <a href="#agendar" className="cta-btn glow-ring px-10 py-4 rounded-xl text-base">
               QUIERO AGENDAR UNA LLAMADA
             </a>
             <a
@@ -102,8 +109,24 @@ export default function Hero() {
               </p>
               <p className="text-sm text-slate-400 mt-1">de experiencia</p>
             </div>
+            {/* Sello de garantía */}
             <div>
-              <p className="text-4xl font-extrabold text-white">8 sem.</p>
+              <div className="flex items-center gap-2">
+                <p className="text-4xl font-extrabold text-white">8 sem.</p>
+                <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <polygon
+                    points={Array.from({ length: 20 }, (_, i) => {
+                      const a = ((i * 360 / 20) - 90) * Math.PI / 180;
+                      const r = i % 2 === 0 ? 49 : 42;
+                      return `${50 + r * Math.cos(a)},${50 + r * Math.sin(a)}`;
+                    }).join(" ")}
+                    fill="#c9a44a"
+                  />
+                  <circle cx="50" cy="50" r="40" fill="#0a1535" />
+                  <circle cx="50" cy="50" r="38.5" stroke="#c9a44a" strokeWidth="2" fill="none" />
+                  <path d="M 30 52 L 44 66 L 70 38" stroke="#c9a44a" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                </svg>
+              </div>
               <p className="text-sm text-slate-400 mt-1">garantía de resultado</p>
             </div>
           </motion.div>

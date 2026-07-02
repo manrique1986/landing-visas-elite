@@ -1,5 +1,7 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import FloatingTestimonios from "@/components/FloatingTestimonios";
+import FotosPrueba from "@/components/FotosPrueba";
 import VSL from "@/components/VSL";
 import Pain from "@/components/Pain";
 import Calificacion from "@/components/Calificacion";
@@ -18,6 +20,7 @@ export default function Page() {
       <Nav />
       <main>
         <Hero />
+        <FotosPrueba />
         <VSL />
         <Pain />
         <Calificacion />
@@ -30,6 +33,7 @@ export default function Page() {
         <FinalCTA />
       </main>
       <Footer />
+      <FloatingTestimonios />
     </>
   );
 }
