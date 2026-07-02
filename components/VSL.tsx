@@ -99,9 +99,6 @@ export default function VSL() {
             allowFullScreen
           />
 
-          {/* Cubre botones like/watchlater arriba derecha */}
-          <div className="absolute top-0 right-0 w-16 h-14 bg-[#0a1535] pointer-events-none" />
-
           {/* Barra de controles */}
           <div className="absolute bottom-0 left-0 right-0 px-4 pb-3 pt-6 bg-gradient-to-t from-black/90 to-transparent">
             {/* Barra de progreso */}
