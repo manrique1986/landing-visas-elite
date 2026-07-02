@@ -12,20 +12,20 @@ const PASOS = [
   {
     num: 2,
     pct: 100,
-    titulo: "Preparación documental",
-    desc: "Armamos el expediente completo: carta de invitación, solvencia económica, vínculos familiares y todo lo que la Embajada necesita ver.",
+    titulo: "Preparación del perfil para adulto mayor",
+    desc: "Creamos el perfil necesario para el adulto mayor con el fin de que sus posibilidades de aprobación de visa sean superiores al 90%, incluyendo los documentos necesarios para el proceso.",
   },
   {
     num: 3,
     pct: 100,
-    titulo: "Simulacro de entrevista",
-    desc: "Preparamos a tus padres para el día D. Practicamos las preguntas más frecuentes del cónsul en su idioma, sin estrés.",
+    titulo: "Preparación para la entrevista consular y simulación en cabina del cónsul",
+    desc: "Preparamos a tus padres para el día de la entrevista. Practicamos las preguntas más frecuentes del cónsul y simulamos la cabina para que lleguen con total seguridad y sin estrés.",
   },
   {
     num: 4,
     pct: 100,
     titulo: "Acompañamiento el día de la cita",
-    desc: "Estamos disponibles antes, durante y después de la entrevista para resolver cualquier imprevisto en tiempo real.",
+    desc: "Ese día tus padres, durante las dos citas consulares, estarán de la mano con el equipo de Visas Elite. Nunca estarán solos.",
   },
   {
     num: 5,
@@ -107,7 +107,7 @@ export default function Metodologia() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <a href="https://catalinavisaselite.com/formulario-de-aplicacion" className="cta-btn px-10 py-4 rounded-xl text-base">
+          <a href="#agendar" className="cta-btn px-10 py-4 rounded-xl text-base">
             QUIERO AGENDAR UNA LLAMADA
           </a>
         </motion.div>

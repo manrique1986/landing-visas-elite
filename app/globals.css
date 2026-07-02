@@ -55,16 +55,42 @@ body {
   }
 }
 .cta-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
   box-shadow: 0 10px 40px rgba(57, 255, 20, 0.7), 0 0 80px rgba(57, 255, 20, 0.35);
+}
+
+/* Barrido de brillo + micro-rebote */
+.cta-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -80%;
+  width: 55%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-18deg);
+  animation: btn-shine 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes btn-shine {
+  0%        { left: -80%; }
+  28%, 100% { left: 130%; }
+}
+@keyframes btn-bounce {
+  0%, 85%, 100% { transform: scale(1); }
+  90%           { transform: scale(1.04); }
+  95%           { transform: scale(0.98); }
 }
 
 @keyframes glow-green {
   0%, 100% { box-shadow: 0 4px 28px rgba(57,255,20,0.5), 0 0 60px rgba(57,255,20,0.2); }
-  50%       { box-shadow: 0 4px 28px rgba(57,255,20,0.8), 0 0 100px rgba(57,255,20,0.4); }
+  50%       { box-shadow: 0 4px 28px rgba(57,255,20,0.9), 0 0 110px rgba(57,255,20,0.45); }
 }
 .cta-btn.glow-ring {
-  animation: glow-green 2s ease-in-out infinite;
+  animation: glow-green 2s ease-in-out infinite, btn-bounce 4s ease-in-out infinite;
+}
+.cta-btn:not(.glow-ring) {
+  animation: btn-bounce 4s ease-in-out infinite;
 }
 
 .card-dark {

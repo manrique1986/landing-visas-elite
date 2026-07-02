@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const TESTIMONIOS = [
   {
@@ -50,8 +50,46 @@ const TESTIMONIOS = [
 
 type Testimonio = typeof TESTIMONIOS[0];
 
+function send(iframe: HTMLIFrameElement, method: string, value?: unknown) {
+  const msg = value !== undefined
+    ? JSON.stringify({ method, value })
+    : JSON.stringify({ method });
+  iframe.contentWindow?.postMessage(msg, "https://player.vimeo.com");
+}
+
 function VideoCard({ t }: { t: Testimonio }) {
   const [playing, setPlaying] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    if (!playing) return;
+    function onMessage(e: MessageEvent) {
+      if (e.origin !== "https://player.vimeo.com") return;
+      if (e.source !== iframeRef.current?.contentWindow) return;
+      try {
+        const data = typeof e.data === "string" ? JSON.parse(e.data) : e.data;
+        if (data.event === "pause") setPaused(true);
+        if (data.event === "play") setPaused(false);
+      } catch { /* noop */ }
+    }
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [playing]);
+
+  function onLoad() {
+    const f = iframeRef.current;
+    if (!f) return;
+    send(f, "addEventListener", "pause");
+    send(f, "addEventListener", "play");
+  }
+
+  function togglePlay() {
+    const f = iframeRef.current;
+    if (!f) return;
+    send(f, paused ? "play" : "pause");
+    setPaused(p => !p);
+  }
 
   return (
     <motion.div
@@ -62,31 +100,51 @@ function VideoCard({ t }: { t: Testimonio }) {
     >
       <div className="relative overflow-hidden" style={{ aspectRatio: "9/16" }}>
         {playing ? (
-          <iframe
-            className="w-full h-full"
-            src={`https://player.vimeo.com/video/${t.id}?autoplay=1&title=0&byline=0&portrait=0&controls=1`}
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-          />
+          <>
+            <iframe
+              ref={iframeRef}
+              onLoad={onLoad}
+              className="w-full h-full"
+              src={`https://player.vimeo.com/video/${t.id}?autoplay=1&title=0&byline=0&portrait=0&controls=0&api=1`}
+              allow="autoplay; fullscreen"
+              allowFullScreen
+            />
+            <button
+              onClick={togglePlay}
+              className="absolute bottom-3 left-3 text-white hover:text-gold transition-colors z-10"
+              aria-label={paused ? "Reproducir" : "Pausar"}
+            >
+              {paused ? (
+                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+              ) : (
+                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6zm8-14v14h4V5z" /></svg>
+              )}
+            </button>
+          </>
         ) : (
           <div
-            className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer bg-navy-gradient"
+            className="absolute inset-0 cursor-pointer"
             onClick={() => setPlaying(true)}
           >
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-gold/10 blur-3xl" />
+            {/* Poster: iframe en pausa muestra el thumbnail real del video */}
+            <iframe
+              className="w-full h-full pointer-events-none"
+              src={`https://player.vimeo.com/video/${t.id}?autoplay=0&title=0&byline=0&portrait=0&controls=0&dnt=1`}
+              allow="autoplay"
+            />
+            {/* Overlay con play button encima */}
+            <div className="absolute inset-0 bg-black/25 flex flex-col items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-gold/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-6 h-6 text-navy ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <p className="mt-4 text-white text-xs font-medium">Ver testimonio</p>
             </div>
-            <div className="w-16 h-16 rounded-full bg-gold/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 z-10">
-              <svg className="w-6 h-6 text-navy ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-            <p className="mt-4 text-slate-400 text-xs z-10">Ver testimonio</p>
           </div>
         )}
       </div>
 
-      {/* Info */}
       <div className="p-5">
         <p className="text-gold font-bold text-sm">{t.resultado}</p>
         <p className="text-slate-300 text-sm mt-1 leading-relaxed">{t.descripcion}</p>
@@ -101,7 +159,7 @@ function VideoCard({ t }: { t: Testimonio }) {
 
 export default function VideoTestimonios() {
   return (
-    <section className="py-24 bg-navy">
+    <section id="testimonios" className="py-24 bg-navy">
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-14">
           <span className="text-gold text-sm font-semibold uppercase tracking-widest">
