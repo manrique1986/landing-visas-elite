@@ -13,10 +13,6 @@ const faqs = [
     a: "Es uno de los casos que más manejamos. Un rechazo previo no cierra la puerta: con el perfil correcto y la preparación adecuada, muchas familias lo logran en el siguiente intento.",
   },
   {
-    q: "¿Qué pasa si después del proceso no aprueban?",
-    a: "Tenemos una garantía de 8 semanas. Solo tomamos casos donde creemos que podemos lograr un resultado positivo. Si acordamos trabajar juntos, el compromiso es total.",
-  },
-  {
     q: "¿Mis padres tienen que ir a Bogotá?",
     a: "Sí, la entrevista es en la Embajada en Bogotá. Pero no van solos: el equipo de Visas Elite los recibe, los acompaña en todo momento y brinda asistencia premium presencial durante todo el proceso.",
   },
