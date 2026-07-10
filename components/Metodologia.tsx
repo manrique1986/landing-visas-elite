@@ -13,7 +13,7 @@ const PASOS = [
     num: 2,
     pct: 100,
     titulo: "Preparación del perfil para adulto mayor",
-    desc: "Creamos el perfil necesario para el adulto mayor con el fin de que sus posibilidades de aprobación de visa sean superiores al 90%, incluyendo los documentos necesarios para el proceso.",
+    desc: "Creamos el perfil ante la embajada americana resaltando los arraigos de los padres y creamos la carpeta documental necesaria para el proceso.",
   },
   {
     num: 3,
