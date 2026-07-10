@@ -37,6 +37,14 @@ export default function VSL() {
           setCurrent(data.data.seconds ?? 0);
           setDuration(data.data.duration ?? 0);
         }
+        if (data.event === "finish") {
+          const f = iframeRef.current;
+          if (f) {
+            send(f, "setCurrentTime", Math.max(0, (data.data?.duration ?? duration) - 0.1));
+            send(f, "pause");
+          }
+          setPaused(true);
+        }
       } catch { /* noop */ }
     }
     window.addEventListener("message", onMessage);
@@ -49,6 +57,7 @@ export default function VSL() {
     send(f, "addEventListener", "pause");
     send(f, "addEventListener", "play");
     send(f, "addEventListener", "playProgress");
+    send(f, "addEventListener", "finish");
   }
 
   function togglePlay() {
